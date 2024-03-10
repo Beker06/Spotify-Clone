@@ -21,8 +21,9 @@ export default function Home() {
             text-white 
               text-3xl 
               font-semibold
-            ">
-              Welcome back
+            "
+          >
+            Welcome back
           </h1>
           <div 
             className="
