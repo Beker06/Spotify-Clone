@@ -1,6 +1,14 @@
+import { Figtree } from 'next/font/google';
+
+// import getSongsByUserId from '@/actions/getSongsByUserId'
+// import getActiveProductsWithPrices from '@/actions/getActiveProductsWithPrices'
 import Sidebar from '@/components/Sidebar';
+// import Player from '@/components/Player'
+import SupabaseProvider from '@/providers/SupabaseProvider';
+import UserProvider from '@/providers/UserProvider';
+import ModalProvider from '@/providers/ModalProvider';
+import ToasterProvider from '@/providers/ToasterProvider';
 import './globals.css'
-import { Figtree } from 'next/font/google'
 
 const font = Figtree({ subsets: ['latin'] })
 
@@ -22,11 +30,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
-        <Sidebar 
-          // songs={}
-        >
-          {children}
-        </Sidebar>
+      <ToasterProvider />
+        <SupabaseProvider>
+          <UserProvider>
+            <ModalProvider 
+              // products={products}
+            />
+            <Sidebar 
+              // songs={}
+            >
+              {children}
+            </Sidebar>
+            {/* <Player /> */}
+          </UserProvider>
+        </SupabaseProvider>
       </body>
     </html>
   )

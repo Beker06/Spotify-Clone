@@ -4,13 +4,13 @@ import { twMerge } from "tailwind-merge";
 import { RxCaretLeft, RxCaretRight } from "react-icons/rx";
 import { useRouter } from "next/navigation";
 import { FaUserAlt } from "react-icons/fa";
-// import { useSupabaseClient } from '@supabase/auth-helpers-react';
+import { useSupabaseClient } from '@supabase/auth-helpers-react';
 import { toast } from "react-hot-toast";
 import { HiHome } from "react-icons/hi";
 import { BiSearch } from "react-icons/bi";
 
-// import useAuthModal from "@/hooks/useAuthModal";
-// import { useUser } from "@/hooks/useUser";
+import useAuthModal from "@/hooks/useAuthModal";
+import { useUser } from "@/hooks/useUser";
 // import usePlayer from "@/hooks/usePlayer";
 
 import Button from "./Button";
@@ -26,19 +26,19 @@ const Header: React.FC<HeaderProps> = ({
 }) => {
     // const player = usePlayer();
     const router = useRouter();
-    // const authModal = useAuthModal();
+    const authModal = useAuthModal();
 
-    // const supabaseClient = useSupabaseClient();
-    // const { user } = useUser();
+    const supabaseClient = useSupabaseClient();
+    const { user } = useUser();
 
     const handleLogout = async () => {
-        // const { error } = await supabaseClient.auth.signOut();
+        const { error } = await supabaseClient.auth.signOut();
         // player.reset();
         router.refresh();
 
-        // if (error) {
-        //     toast.error(error.message);
-        // }
+        if (error) {
+            toast.error(error.message);
+        }
     }
 
     return (
@@ -119,7 +119,7 @@ const Header: React.FC<HeaderProps> = ({
                     </button>
                 </div>
                 <div className="flex justify-between items-center gap-x-4">
-                    {/* {user ? (
+                    {user ? (
                         <div className="flex gap-x-4 items-center">
                             <Button
                                 onClick={handleLogout}
@@ -157,7 +157,7 @@ const Header: React.FC<HeaderProps> = ({
                                 </Button>
                             </div>
                         </>
-                    )} */}
+                    )}
                 </div>
             </div>
             {children}
