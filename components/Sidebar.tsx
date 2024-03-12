@@ -14,12 +14,12 @@ import Library from "./Library";
 
 interface SidebarProps {
     children: React.ReactNode;
-    // songs: Song[];
+    songs: Song[];
 }
 
 const Sidebar = ({ 
     children, 
-    // songs 
+    songs 
 }: SidebarProps) => {
     const pathname = usePathname();
     // const player = usePlayer();
@@ -69,7 +69,7 @@ const Sidebar = ({
                 </Box>
                 <Box className="overflow-y-auto h-full">
                     <Library 
-                        // songs={songs} 
+                        songs={songs} 
                     />
                 </Box>
             </div>

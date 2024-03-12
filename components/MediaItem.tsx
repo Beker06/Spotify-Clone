@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-// import useLoadImage from "@/hooks/useLoadImage";
+import useLoadImage from "@/hooks/useLoadImage";
 import { Song } from "@/types";
 // import usePlayer from "@/hooks/usePlayer";
 
@@ -16,7 +16,7 @@ const MediaItem: React.FC<MediaItemProps> = ({
     onClick,
 }) => {
     // const player = usePlayer();
-    // const imageUrl = useLoadImage(data);
+    const imageUrl = useLoadImage(data);
 
     const handleClick = () => {
         if (onClick) {
@@ -51,8 +51,7 @@ const MediaItem: React.FC<MediaItemProps> = ({
             >
                 <Image
                     fill
-                    // src={imageUrl || "/images/music-placeholder.png"}
-                    src={"/images/music-placeholder.png"}
+                    src={imageUrl || "/images/music-placeholder.png"}
                     alt="MediaItem"
                     className="object-cover"
                 />

@@ -37,7 +37,7 @@ export default async function RootLayout({
               // products={products}
             />
             <Sidebar 
-              // songs={userSongs}
+              songs={userSongs}
             >
               {children}
             </Sidebar>
