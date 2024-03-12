@@ -1,8 +1,12 @@
-import Image from 'next/image'
-import Header from '@/components/Header'
-import ListItem from '@/components/ListItem'
+import getSongs from "@/actions/getSongs";
+import Header from "@/components/Header";
+import ListItem from "@/components/ListItem";
+import PageContent from "./components/PageContent";
 
-export default function Home() {
+export const revalidate = 0;
+
+export default async function Home() {
+  const songs = await getSongs();
   return (
     <div
       className="
@@ -50,7 +54,7 @@ export default function Home() {
             Newest songs
           </h1>
         </div>
-        {/* <PageContent songs={songs} /> */}
+        <PageContent songs={songs} />
       </div>
     </div>
   )
