@@ -1,7 +1,7 @@
 import { Figtree } from 'next/font/google';
 
 import getSongsByUserId from '@/actions/getSongsByUserId'
-// import getActiveProductsWithPrices from '@/actions/getActiveProductsWithPrices'
+import getActiveProductsWithPrices from '@/actions/getActiveProductsWithPrices'
 import Sidebar from '@/components/Sidebar';
 import Player from '@/components/Player'
 import SupabaseProvider from '@/providers/SupabaseProvider';
@@ -24,21 +24,17 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  // const products = await getActiveProductsWithPrices();
+  const products = await getActiveProductsWithPrices();
   const userSongs = await getSongsByUserId();
 
   return (
     <html lang="en">
       <body className={font.className}>
-      <ToasterProvider />
+        <ToasterProvider />
         <SupabaseProvider>
           <UserProvider>
-            <ModalProvider 
-              // products={products}
-            />
-            <Sidebar 
-              songs={userSongs}
-            >
+            <ModalProvider products={products}/>
+            <Sidebar songs={userSongs}>
               {children}
             </Sidebar>
             <Player />

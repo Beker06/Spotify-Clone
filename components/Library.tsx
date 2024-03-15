@@ -21,7 +21,7 @@ const Library: React.FC<LibraryProps> = ({
 }) => {
     const { 
         user, 
-        // subscription 
+        subscription 
     } = useUser();
     const uploadModal = useUploadModal();
     const authModal = useAuthModal();
@@ -34,9 +34,9 @@ const Library: React.FC<LibraryProps> = ({
             return authModal.onOpen();
         }
 
-        // if (!subscription) {
-        //     return subscribeModal.onOpen();
-        // }
+        if (!subscription) {
+            return subscribeModal.onOpen();
+        }
 
         return uploadModal.onOpen();
     }
