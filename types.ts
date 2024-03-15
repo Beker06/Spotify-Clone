@@ -33,10 +33,10 @@ export interface Price {
     products?: Product;
 }
 
-// export interface Customer {
-//     id: string;
-//     stripe_customer_id?: string;
-// }
+export interface Customer {
+    id: string;
+    stripe_customer_id?: string;
+}
 
 export interface UserDetails {
     id: string;
